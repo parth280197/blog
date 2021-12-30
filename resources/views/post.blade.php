@@ -6,4 +6,5 @@
 <article>
     <?= $post;  ?>
 </article>
+<p><a href="/posts">back to home</a></p>
 </body>
