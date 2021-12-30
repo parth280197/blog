@@ -25,9 +25,16 @@ Route::get('/posts/{post}', function ($slug) {
 //        ddd("file does not exist");
     }
 
-    $post = file_get_contents($path);
+//  Same code without arrow fn()
+//    $post = cache()->remember("posts.{$slug}", 5, function () use($path) {
+//        var_dump('file_get_contents');
+//        return file_get_contents($path);
+//    });
+
+    $post = cache()->remember("posts.{$slug}", 5, fn() => file_get_contents($path));
+
 
     return view('post', [
         'post' => $post
     ]);
-})->where('post','[A-z_\-]+');
+})->where('post', '[A-z_\-]+');
