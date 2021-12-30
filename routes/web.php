@@ -26,3 +26,16 @@ Route::get('/posts/{post}', function ($slug) {
         'post' => Post::find($slug)
     ]);
 })->where('post', '[A-z_\-]+');
+
+/*
+ * Note:
+ *
+ * run for seeing cache
+ * php artisan tinker
+ *
+ * for checking cache
+ * cache('posts.all')
+ *
+ * for forgetting cache
+ * cache()->forget('posts.all')
+ */
