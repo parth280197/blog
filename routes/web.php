@@ -19,12 +19,13 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
 
-    \Illuminate\Support\Facades\DB::listen(function ($query) {
-        logger($query->sql, $query->bindings);
-    });
+//    For watching logs
+//    \Illuminate\Support\Facades\DB::listen(function ($query) {
+//        logger($query->sql, $query->bindings);
+//    });
 
     return view('posts', [
-        'posts' => Post::with('category')->get()
+        'posts' => Post::latest()->with('category','author')->get()
     ]);
 });
 
@@ -48,9 +49,9 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     ]);
 });
 
-Route::get('/users/{user:id}', function (User $user) {
+Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
-        'posts' => $user->posts
+        'posts' => $author->posts
     ]);
 });
 
