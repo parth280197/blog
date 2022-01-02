@@ -82,5 +82,8 @@ Route::get('/posts/{post}', function (Post $post) {
  * php artisan migrate
  * php artisan make:model Post
  *
+ * Creating model with migaration
+ *
+ * php artisan make:model Category -m
  *
  */
