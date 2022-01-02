@@ -21,9 +21,9 @@ Route::get('/posts', function () {
     ]);
 });
 
-Route::get('/posts/{post}', function ($slug) {
+Route::get('/posts/{post}', function ($id) {
     return view('post', [
-        'post' => Post::findOrFail($slug)
+        'post' => Post::findOrFail($id)
     ]);
 });
 
@@ -67,6 +67,12 @@ Route::get('/posts/{post}', function ($slug) {
      created_at: "2022-01-01 23:51:55",
      id: 1,
    }
+ *
+ * Make a Post Model and Migration
+ *
+ * php artisan make:migration create_posts_table
+ * php artisan migrate
+ * php artisan make:model Post
  *
  *
  */
