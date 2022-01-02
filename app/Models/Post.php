@@ -9,6 +9,10 @@ class Post extends Model
 {
     use HasFactory;
 
+    //use Post::without(['category','author'])->all() if you dont want it to load eagerly.
+    //but rest if we set with property it will fetch all associated data.
+    protected $with = ['category','author'];
+
     //completely allow mass assignment Post::create(['title'=>'title',......])
     //completely block mass assignment - use if we are creating/updating data from forms.
     protected $guarded = [];
