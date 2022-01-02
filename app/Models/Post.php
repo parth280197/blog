@@ -13,6 +13,10 @@ class Post extends Model
     //completely block mass assignment - use if we are creating/updating data from forms.
     protected $guarded = [];
 
+    public function getRouteKey()
+    {
+        return 'slug';
+    }
 //    protected $guarded = ['id']; id is not mass assignable here
 
 //    protected $fillable = ['title', 'excerpt', 'body']; mentioned properties are mass assignable.

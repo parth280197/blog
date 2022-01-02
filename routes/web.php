@@ -21,9 +21,17 @@ Route::get('/posts', function () {
     ]);
 });
 
-Route::get('/posts/{post}', function ($id) {
+//here wildcard should be match with variable name in function.
+//Route::get('/posts/{post:slug}', function (Post $post) { //give me the post where slug is matching in post.
+//    return view('post', [
+//        'post' => $post
+//    ]);
+//});
+
+//an alternative way
+Route::get('/posts/{post}', function (Post $post) {
     return view('post', [
-        'post' => Post::findOrFail($id)
+        'post' => $post
     ]);
 });
 
